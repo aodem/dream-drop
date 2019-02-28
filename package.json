@@ -1,0 +1,25 @@
+{
+  "name": "lucid-dream-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aodem/lucid-dream-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aodem/lucid-dream-app/issues"
+  },
+  "homepage": "https://github.com/aodem/lucid-dream-app#readme",
+  "dependencies": {
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.42.1"
+  }
+}

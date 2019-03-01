@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-	var Post = sequelize.define("Post", {
+	const Post = sequelize.define("Post", {
 		dreamer_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -37,23 +37,23 @@ module.exports = function (sequelize, DataTypes) {
 	return Post;
 };
 
-var sound = new Audio("https://www.freespecialeffects.co.uk/soundfx/animals/duck1.wav");
+const sound = new Audio("https://www.freespecialeffects.co.uk/soundfx/animals/duck1.wav");
 sound.loop = true;
 
-var h2 = document.getElementById('clock');
+const h2 = document.getElementById('clock');
 
 // display current time by the second
-var currentTime = setInterval(function () {
-	var date = new Date();
+const currentTime = setInterval(function () {
+	const date = new Date();
 
-	var hours = (12 - (date.getHours()));
-	// var hours = date.getHours();
+	const hours = (12 - (date.getHours()));
+	// const hours = date.getHours();
 
-	var minutes = date.getMinutes();
+	const minutes = date.getMinutes();
 
-	var seconds = date.getSeconds();
+	const seconds = date.getSeconds();
 
-	var ampm = (date.getHours()) < 12 ? 'AM' : 'PM';
+	const ampm = (date.getHours()) < 12 ? 'AM' : 'PM';
 
 
 	//convert military time to standard time
@@ -84,8 +84,8 @@ function addZero(time) {
 
 function hoursMenu() {
 
-	var select = document.getElementById('alarmhrs');
-	var hrs = 12
+	const select = document.getElementById('alarmhrs');
+	const hrs = 12
 
 	for (i = 1; i <= hrs; i++) {
 		select.options[select.options.length] = new Option(i < 10 ? "0" + i : i, i);
@@ -96,8 +96,8 @@ hoursMenu();
 
 function minMenu() {
 
-	var select = document.getElementById('alarmmins');
-	var min = 59;
+	const select = document.getElementById('alarmmins');
+	const min = 59;
 
 	for (i = 0; i <= min; i++) {
 		select.options[select.options.length] = new Option(i < 10 ? "0" + i : i, i);
@@ -107,8 +107,8 @@ minMenu();
 
 function secMenu() {
 
-	var select = document.getElementById('alarmsecs');
-	var sec = 59;
+	const select = document.getElementById('alarmsecs');
+	const sec = 59;
 
 	for (i = 0; i <= sec; i++) {
 		select.options[select.options.length] = new Option(i < 10 ? "0" + i : i, i);
@@ -119,21 +119,21 @@ secMenu();
 
 function alarmSet() {
 
-	var hr = document.getElementById('alarmhrs');
+	const hr = document.getElementById('alarmhrs');
 
-	var min = document.getElementById('alarmmins');
+	const min = document.getElementById('alarmmins');
 
-	var sec = document.getElementById('alarmsecs');
+	const sec = document.getElementById('alarmsecs');
 
-	var ap = document.getElementById('ampm');
+	const ap = document.getElementById('ampm');
 
 
-	var selectedHour = hr.options[hr.selectedIndex].value;
-	var selectedMin = min.options[min.selectedIndex].value;
-	var selectedSec = sec.options[sec.selectedIndex].value;
-	var selectedAP = ap.options[ap.selectedIndex].value;
+	const selectedHour = hr.options[hr.selectedIndex].value;
+	const selectedMin = min.options[min.selectedIndex].value;
+	const selectedSec = sec.options[sec.selectedIndex].value;
+	const selectedAP = ap.options[ap.selectedIndex].value;
 
-	var alarmTime = addZero(selectedHour) + ":" + addZero(selectedMin) + ":" + addZero(selectedSec) + selectedAP;
+	const alarmTime = addZero(selectedHour) + ":" + addZero(selectedMin) + ":" + addZero(selectedSec) + selectedAP;
 	console.log('alarmTime:' + alarmTime);
 
 	document.getElementById('alarmhrs').disabled = true;
@@ -143,7 +143,7 @@ function alarmSet() {
 
 
 	//when alarmtime is equal to currenttime then play a sound
-	var h2 = document.getElementById('clock');
+	const h2 = document.getElementById('clock');
 
 	/*function to calcutate the current time 
 	then compare it to the alarmtime and play a sound when they are equal
@@ -151,16 +151,16 @@ function alarmSet() {
 
 	setInterval(function () {
 
-		var date = new Date();
+		const date = new Date();
 
-		var hours = (12 - (date.getHours()));
-		// var hours = date.getHours();
+		const hours = (12 - (date.getHours()));
+		// const hours = date.getHours();
 
-		var minutes = date.getMinutes();
+		const minutes = date.getMinutes();
 
-		var seconds = date.getSeconds();
+		const seconds = date.getSeconds();
 
-		var ampm = (date.getHours()) < 12 ? 'AM' : 'PM';
+		const ampm = (date.getHours()) < 12 ? 'AM' : 'PM';
 
 
 		//convert military time to standard time
@@ -173,7 +173,7 @@ function alarmSet() {
 			hours = hours;
 		}
 
-		var currentTime = h2.textContent = addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds) + "" + ampm;
+		const currentTime = h2.textContent = addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds) + "" + ampm;
 
 
 		if (alarmTime == currentTime) {

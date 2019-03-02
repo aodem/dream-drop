@@ -18,14 +18,35 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+require("./controllers/controller.js")(app);
+
 // Static directory
 app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/html-routes.js")(app);
-require("./routes/author-api-routes.js")(app);
-require("./routes/post-api-routes.js")(app);
+// route to landing/home page
+app.get("/", (req, res) => {
+  res.render("index", { title: "Home Page"});
+});
+//route to sign-in page
+app.get("/sign-in", (req, res) => {
+  res.render("sign-in",  { title: "Sign-in Page"});
+});
+//route to dreams page
+app.get("/dreams", (req, res) => {
+  res.render("dreams",  { title: "Dreams Page"});
+});
+// require("./routes/html-routes.js")(app);
+// require("./routes/author-api-routes.js")(app);
+// require("./routes/post-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

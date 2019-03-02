@@ -4,30 +4,28 @@
 
 // Dependencies
 // =============================================================
-var path = require("path");
+// const path = require("path");
+// const express = require("express");
+
+// const router = express.Router();
+
 
 // Routes
 // =============================================================
-module.exports = function(app) {
-  // Each of the below routes just handles the HTML page that the user gets sent to.
+// Each of the below routes just handles the HTML page that the user gets sent to.
+module.exports = (app) => {
+    // route to landing/home page
 
-  // index route loads landing page
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+  app.get("/", (req, res) => {
+    res.render("index", { title: "Home Page"});
   });
+  //route to sign-in page
+  app.get("/sign-in", (req, res) => {
+    res.render("sign-in",  { title: "Sign-in Page"});
+  });
+  //route to dreams page
+  app.get("/dreams", (req, res) => {
+    res.render("dreams",  { title: "Dreams Page"});
+  });
+}
 
-  // home page route
-  app.get("/home", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
-  });
-
-  // dreams routes
-  app.get("/dreamer", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/dreams.html"));
-  });
-
-  // authors route loads author-manager.html
-  app.get("/authors", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  });
-};

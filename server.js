@@ -32,6 +32,7 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
+
 // route to landing/home page
 app.get("/", (req, res) => {
   res.render("index", { title: "Home Page"});
@@ -47,6 +48,11 @@ app.get("/dreams", (req, res) => {
 // require("./routes/html-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
 // require("./routes/post-api-routes.js")(app);
+
+require("./routes/html-routes.js")(app);
+require("./routes/user.js")(app);
+require("./routes/post-api-routes.js")(app);
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

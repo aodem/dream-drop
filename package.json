@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/aodem/lucid-dream-app#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "mysql2": "^1.6.5",
     "sequelize": "^4.42.1"
   }

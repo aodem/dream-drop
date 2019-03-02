@@ -1,41 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
-	const Post = sequelize.define("Post", {
-		dreamer_name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		dream_description: {
-			type: DataTypes.TEXT,
-			allowNull: false,
-		},
-		mood: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		food_before_sleep: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		hours_of_sleep: {
-			type: DataTypes.INTEGER,
-			allowNull: false
-		},
-		tv_on: {
-			type: DataTypes.BOOLEAN,
-			default: false
-		}
-	});
-	Post.associate = function (models) {
-		// We're saying that a Post should belong to an dreamer
-		// A Post can't be created without an dreamer due to the foreign key constraint
-		Post.belongsTo(models.dreamer, {
-			foreignKey: {
-				allowNull: false
-			}
-		});
-	};
-	return Post;
-};
+
 
 const sound = new Audio("https://www.freespecialeffects.co.uk/soundfx/animals/duck1.wav");
 sound.loop = true;

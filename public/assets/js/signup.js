@@ -11,34 +11,26 @@ $(() => {
         console.log(`Name: ${name} || Email: ${email}`);
 
         // input validation needed for the email address
-        // const emailReg = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)
+        const emailReg = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
         
-        $.ajax("/api/test", {
-          type: "GET",
-        }).then(function() {
-          console.log("complete");
-        });
-        console.log("hi");
-        
-        // if(!emailReg.test(email)){
-        //     alert("Please enter a valid email address!")
-        // }    
+        if(!emailReg.test(email)){
+            alert("Please enter a valid email address!")
+        }    
 
-       
-        // let newDreamer = {
-        //     dreamer_name: name,
-        //     email: email,
-        //     age: $("input[name='age']").val(),
-        //     gender: $("select[name='sex']").val()
-        // };
-        // $.ajax({
-        //     url:"/api/dreamers",
-        //     method:"POST",
-        //     data: newDreamer
-        // }).then((results) => {
-        //     console.log(`results\n`);
-        //     console.log(`New dreamer added:\n${newDreamer.name}\n${newDreamer.email}\n${newDreamer.age}\n${newDreamer.sex}\n`);
-        // })
-        event.preventDefault();
+        let newDreamer = {
+            dreamer_name: name,
+            email: email,
+            age: $("input[name='age']").val(),
+            gender: $("select[name='sex']").val()
+        };
+        $.ajax({
+            url:"/api/dreamers",
+            method:"POST",
+            data: newDreamer
+        }).then((results) => {
+            console.log(`results\n`);
+            console.log(`New dreamer added:\n${newDreamer.name}\n${newDreamer.email}\n${newDreamer.age}\n${newDreamer.sex}\n`);
+        })
+        
     })
 })

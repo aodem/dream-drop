@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
-          sex: {
+          gender: {
             type: DataTypes.STRING,
             allowNull: false,
             }
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     Dreamer.associate = function(models) {
       // Associating dreamer with Posts
       // When an dreamer is deleted, also delete any associated Posts
-      Dreamer.hasMany(models.dreams, {
+      Dreamer.hasMany(models.Dreams, {
         onDelete: "cascade"
       });
     };

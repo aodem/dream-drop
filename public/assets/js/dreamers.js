@@ -24,19 +24,19 @@ $(() => {
           });
 
           // new dream submisssion
-          $().on("submit", e => {
+          $(".dream_create").on("submit", e => {
             event.preventDefault(e);
 
             let newDreamCreation = {
-              dreamer: $().val(),
-              title: $().val().trim(),
-              body: $().val().trim(),
-              mood: $().val(),
-              category: $().val()
+              dream_description: $("textarea[name=dream_description]").val().trim(),
+              mood: $("input[name=mood]").val(),
+              food: $("input[name=food]").val().trim(),
+              hours_of_sleep: $("input[name=hours_of_sleep]").val(),
+              category: $("select[name=tv_on]").val()
             };
 
             $.ajax({
-              url: "/api/post",
+              url: "/api/dreams",
               method: "POST",
               data: newDreamCreation
             }).then(() => {

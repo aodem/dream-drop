@@ -1,25 +1,29 @@
-// jquery for application pages. Goal: retrieve the data from forms and dream creation. 
+// jquery for application pages. Goal: retrieve the data from forms and dream creation.
 
 $(() => {
     // create dreamer form jquery
-    $("button").on("submit", (e) => {
-        event.preventDefault(e);
+    $(".create-form").on("submit", function(event) {
+        event.preventDefault();
 
-        const name = $().val().trim();
-        const email = $().val().trim();
+        const name = $("input[name='dreamer_name']").val().trim();
+        const email = $("input[name='email']").val().trim();
+
+        console.log(`Name: ${name} || Email: ${email}`);
 
         // input validation needed for the email address
-        const emailReg = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}$";
+        const emailReg = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
 
+       
+        
         if(!emailReg.test(email)){
             alert("Please enter a valid email address!")
         }    
 
         let newDreamer = {
-            name: name,
+            dreamer_name: name,
             email: email,
-            age: $().val(),
-            sex: $().val()
+            age: $("input[name='age']").val(),
+            gender: $("select[name='gender']").val()
         };
         $.ajax({
             url:"/api/dreamers",
@@ -29,7 +33,6 @@ $(() => {
             console.log(`results\n`);
             console.log(`New dreamer added:\n${newDreamer.name}\n${newDreamer.email}\n${newDreamer.age}\n${newDreamer.sex}\n`);
         })
-
-        res.redirect("/demo")
-    }) 
+        
+    })
 })

@@ -33,11 +33,11 @@ module.exports = function (sequelize, DataTypes) {
 	Dreams.associate = function (models) {
 		// We're saying that a Post should belong to an dreamer
 		// A Post can't be created without an dreamer due to the foreign key constraint
-		Post.belongsTo(models.dreamer, {
+		Dreams.belongsTo(models.Dreamer, {
 			foreignKey: {
 				allowNull: false
 			}
 		});
 	};
-	return Post;
+	return Dreams;
 };

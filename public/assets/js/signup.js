@@ -12,6 +12,8 @@ $(() => {
 
         // input validation needed for the email address
         const emailReg = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/);
+
+       
         
         if(!emailReg.test(email)){
             alert("Please enter a valid email address!")

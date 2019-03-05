@@ -23,7 +23,7 @@ $(() => {
             dreamer_name: name,
             email: email,
             age: $("input[name='age']").val(),
-            gender: $("select[name='sex']").val()
+            gender: $("select[name='gender']").val()
         };
         $.ajax({
             url:"/api/dreamers",
@@ -36,3 +36,4 @@ $(() => {
         
     })
 })
+

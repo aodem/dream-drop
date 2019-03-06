@@ -1,12 +1,10 @@
 {{> header}}
 
-<h2>Drop a dream of your own or simply browse other people's dreams!</h2>
-
-{{!-- Form to input dream data --}}
+{{!-- Form to update dream data --}}
 <main>
     <div class="jumbotron jumbotron-fluid">
         <div class="splashbox">
-            <h5 class="display-4">Dream Drop:</h5>
+            <h5 class="display-4">Update Your Dream Here:</h5>
             <form action="/dreams" method="POST" class="dream_create">
                 <div class="form-group">
                     <label for="dream_description">Describe Your Dream Here:</label>
@@ -65,68 +63,7 @@
                 </select>
             </div>
         </div>
-        <button id="createDreamBtn"type="submit" class="btn btn-info btn-lg" >Drop A Dream</button>
-        <a class="btn btn-info btn-lg" href="./update.handlebars" role="button">Edit A Dream</a>
-        <button id="deleteDreamBtn" type="submit" class="btn btn-info btn-lg">Delete A Dream</button>
+        <button id="updateDreamBtn" type="submit" class="btn btn-info btn-lg">Update Dream</button>
         </form>
     </div>
     </div>
-
-{{!-- Form to filter dreams by either category or mood --}}
-    <div class="jumbotron jumbotron-fluid">
-        <div class="splashbox">
-            <h5 class="display-4">Filter Which Dreams You See Here, Or Keep Scrolling to See All Dreams:</h5>
-            {{!-- <form action="/dreams" method="POST" class="dream_create"> --}}
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="category">Filter by Category:</label>
-                        <select class="custom-select" name="category">
-                            <option selected>Please Choose One</option>
-                            <option value="Daydream">Daydream</option>
-                            <option value="Lucid Dream">Lucid Dream</option>
-                            <option value="Nightmare">Nightmare</option>
-                            <option value="Recurring Dream">Recurring Dream</option>
-                            <option value="Healing Dream">Healing Dream</option>
-                            <option value="Prophetic Dream">Prophetic Dream</option>
-                            <option value="Signal Dream">Signal Dream</option>
-                            <option value="Epic Dream">Epic Dream</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="mood">Filter by Mood:</label>
-                        <select class="custom-select" name="mood">
-                            <option selected>Please Choose One</option>
-                            <option value="Tense-Nervous">Tense-Nervous</option>
-                            <option value="Irritated-Annoyed">Irritated-Annoyed</option>
-                            <option value="Excited-Lively">Excited-Lively</option>
-                            <option value="Cheerful-Happy">Cheerful-Happy</option>
-                            <option value="Bored-Weary">Bored-Weary</option>
-                            <option value="Gloomy-Sad">Gloomy-Sad</option>
-                            <option value="Relaxed-Carefree">Relaxed-Carefree</option>
-                            <option value="Calm-Serene">Calm-Serene</option>
-                        </select>
-                    </div>
-                </div>
-                <button id="filterDreamBtn" type="submit" class="btn btn-info btn-lg">Filter Dreams</button>
-            </form>
-        </div>
-    </div>
-
-    {{!-- displays all available user dreams from dreams data table --}}
-    <div class="jumbotron jumbotron-fluid">
-        <div class="splashbox">
-            <div class="row">
-                <div class="col-lg-12">
-                    {{#each dreams}}
-                    <div>
-                        {{this.dreams}}
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-        </div>
-    </div>
-
-</main>

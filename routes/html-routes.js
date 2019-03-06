@@ -19,5 +19,9 @@ module.exports = (app) => {
   app.get("/dreams", (req, res) => {
     res.render("dreams",  { title: "Dreams Page"});
   });
+  //route to alarm page
+  app.get("/clock", (req, res) => {
+    res.render("clock",  { title: "Alarm Page"});
+  });
 }
 

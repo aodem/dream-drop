@@ -6,42 +6,115 @@
 <main>
     <div class="jumbotron jumbotron-fluid">
         <div class="splashbox">
-            <h5 class="display-4">Drop Dreams Here:</h5>
+            <h5 class="display-4">Dream Drop:</h5>
             <form action="/dreams" method="POST" class="dream_create">
                 <div class="form-group">
-                    <label for="dream_description">Drop Dream Here:</label>
+                    <label for="dream_description">Describe Your Dream Here:</label>
                     <textarea class="form-control" rows="5" id="dream_description" name="dream_description"></textarea>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="mood">What Mood Were you in Before Sleeping?</label>
-                        <input type="text" class="form-control" id="mood" placeholder="Enter Mood Here" name="mood">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="food">What did you eat before sleeping?</label>
-                        <input type="text" class="form-control" id="food" placeholder="Enter Food Here" name="food">
+                        <label for="category">Which of the following categories would you say your dream was?</label>
+                        <select class="custom-select" name="category">
+                            <option selected>Please Choose One</option>
+                            <option value="Daydream">Daydream</option>
+                            <option value="Lucid Dream">Lucid Dream</option>
+                            <option value="Nightmare">Nightmare</option>
+                            <option value="Recurring Dream">Recurring Dream</option>
+                            <option value="Healing Dream">Healing Dream</option>
+                            <option value="Prophetic Dream">Prophetic Dream</option>
+                            <option value="Signal Dream">Signal Dream</option>
+                            <option value="Epic Dream">Epic Dream</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="hours_of_sleep">How many total hours did you sleep?</label>
-                        <input type="number" class="form-control" id="hours_of_sleep" placeholder="Enter Number Here" name="hours_of_sleep">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="tv_on">Did you fall asleep with the television on?</label>
-                        <select id="tv_on" class="form-control" name="tv_on">
+                        <label for="mood">Which of the following most closely reflects your mood when you went to
+                            sleep?</label>
+                        <select class="custom-select" name="mood">
                             <option selected>Please Choose One</option>
-                            <option value="true">Yes</option>
-                            <option value="false">No</option>
+                            <option value="Tense-Nervous">Tense-Nervous</option>
+                            <option value="Irritated-Annoyed">Irritated-Annoyed</option>
+                            <option value="Excited-Lively">Excited-Lively</option>
+                            <option value="Cheerful-Happy">Cheerful-Happy</option>
+                            <option value="Bored-Weary">Bored-Weary</option>
+                            <option value="Gloomy-Sad">Gloomy-Sad</option>
+                            <option value="Relaxed-Carefree">Relaxed-Carefree</option>
+                            <option value="Calm-Serene">Calm-Serene</option>
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-info btn-lg">Drop Your Dream</button>
+                <div class="form-group col-md-6">
+                    <label for="food">What did you eat before sleeping?</label>
+                    <input type="text" class="form-control" id="food" placeholder="Enter Food Here" name="food">
+                </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="hours_of_sleep">How many total hours did you sleep?</label>
+                <input type="number" class="form-control" id="hours_of_sleep" placeholder="Enter Number Here"
+                    name="hours_of_sleep">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="tv_on">Did you fall asleep with the television on?</label>
+                <select id="tv_on" class="form-control" name="tv_on">
+                    <option selected>Please Choose One</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+        </div>
+        <button id="createDreamBtn"type="submit" class="btn btn-info btn-lg" >Drop A Dream</button>
+        <button id="updateDreamBtn" type="submit" class="btn btn-info btn-lg">Edit A Dream</button>
+        <button id="deleteDreamBtn" type="submit" class="btn btn-info btn-lg">Delete A Dream</button>
+        </form>
+    </div>
+    </div>
+
+{{!-- Form to filter dreams by either category or mood --}}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="splashbox">
+            <h5 class="display-4">Filter Which Dreams You See Here, Or Keep Scrolling to See All Dreams:</h5>
+            {{!-- <form action="/dreams" method="POST" class="dream_create"> --}}
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="category">Filter by Category:</label>
+                        <select class="custom-select" name="category">
+                            <option selected>Please Choose One</option>
+                            <option value="Daydream">Daydream</option>
+                            <option value="Lucid Dream">Lucid Dream</option>
+                            <option value="Nightmare">Nightmare</option>
+                            <option value="Recurring Dream">Recurring Dream</option>
+                            <option value="Healing Dream">Healing Dream</option>
+                            <option value="Prophetic Dream">Prophetic Dream</option>
+                            <option value="Signal Dream">Signal Dream</option>
+                            <option value="Epic Dream">Epic Dream</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="mood">Filter by Mood:</label>
+                        <select class="custom-select" name="mood">
+                            <option selected>Please Choose One</option>
+                            <option value="Tense-Nervous">Tense-Nervous</option>
+                            <option value="Irritated-Annoyed">Irritated-Annoyed</option>
+                            <option value="Excited-Lively">Excited-Lively</option>
+                            <option value="Cheerful-Happy">Cheerful-Happy</option>
+                            <option value="Bored-Weary">Bored-Weary</option>
+                            <option value="Gloomy-Sad">Gloomy-Sad</option>
+                            <option value="Relaxed-Carefree">Relaxed-Carefree</option>
+                            <option value="Calm-Serene">Calm-Serene</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="filterDreamBtn" type="submit" class="btn btn-info btn-lg">Filter Dreams</button>
             </form>
         </div>
     </div>
 
-    {{!-- displays all available user dreams from data dreams data table --}}
+    {{!-- displays all available user dreams from dreams data table --}}
     <div class="jumbotron jumbotron-fluid">
         <div class="splashbox">
             <div class="row">
@@ -55,5 +128,5 @@
             </div>
         </div>
     </div>
-    
+
 </main>

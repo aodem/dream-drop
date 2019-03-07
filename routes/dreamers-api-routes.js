@@ -67,4 +67,13 @@ module.exports = function(app) {
       res.json(dbDreamer);
     });
   });
+  app.put("/api/dreamers/:id", function(req, res) {
+    db.Dreamer.update({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbDreamer) {
+      res.json(dbDreamer);
+    });
+  });
 };

@@ -8,13 +8,11 @@ $(() => {
 
     let moodVal = $("select[name=]").val();
     let categoryVal = $("select[name=]").val();
-
     let preChoices = [moodVal, categoryVal];
-
     let choices = [];
 
     preChoices.forEach(element => {
-      if (element != " ") {
+      if (element !== " ") {
         choices.push(element);
       }
     });
@@ -43,13 +41,14 @@ $(() => {
     console.log("hello");
     
     let newDreamCreation = {
-      dreamer_name: "test",
+      dream_title: $(),
       dream_description: $("textarea[name=dream_description]").val().trim(),
       mood: $("input[name=mood]").val(),
       food: $("input[name=food]").val().trim(),
       hours_of_sleep: $("input[name=hours_of_sleep]").val(),
       tv_on: $("select[name=tv_on]").val(),
-      category: $("select[name=category]").val()
+      category: $("select[name=category]").val(),
+      author_id: $()
     };
 
     $.ajax({

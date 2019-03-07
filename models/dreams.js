@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 	const Dreams = sequelize.define("Dreams", {
-		dreams_title: {
+		dream_title: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},

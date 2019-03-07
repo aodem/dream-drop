@@ -1,10 +1,10 @@
 {{> header}}
 
-<h2>Drop a dream of your own or simply browse other people's dreams!</h2>
-
+<br>
+<h2>Drop a dream of your own or Browse Dream Drops by others!</h2>
 {{!-- Form to input dream data --}}
 <main>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
         <div class="splashbox">
             <h5 class="display-4">Dream Drop:</h5>
             <form action="/dreams" method="POST" class="dream_create">
@@ -80,7 +80,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="category">Filter by Category:</label>
-                        <select class="custom-select" name="category">
+                        <select class="custom-select" name="category" data-selected="unchecked">
                             <option selected>Please Choose One</option>
                             <option value="Daydream">Daydream</option>
                             <option value="Lucid Dream">Lucid Dream</option>
@@ -96,7 +96,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="mood">Filter by Mood:</label>
-                        <select class="custom-select" name="mood">
+                        <select class="custom-select" name="mood" data-selected="unchecked">
                             <option selected>Please Choose One</option>
                             <option value="Tense-Nervous">Tense-Nervous</option>
                             <option value="Irritated-Annoyed">Irritated-Annoyed</option>

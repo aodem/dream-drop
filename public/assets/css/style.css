@@ -8,22 +8,23 @@ body {
   margin: 0;
   z-index: 2;
   font-family: 'Quicksand', sans-serif;
-  overflow: scroll;
+  
+  padding-bottom: 80vh;
 
 }
-nav {
+#nav {
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
+  z-index: 999;
 }
 
 .container-fluid{
   background: rgba(0,0,0,0.4)!important;
-   margin-top: 15px;  
-    top:280px;
-    margin: auto;
-    width: 80%;
+  position: relative;
+  top: 180px;
+  max-width:600px;
    
   }
 h1 {
@@ -37,7 +38,7 @@ h1 {
 }
 
 .display-4 {
-  color: black;
+  color: rgb(252, 245, 245);
   font-size: 30px;
 }
 
@@ -83,6 +84,8 @@ h4 {
   animation:
     typing 3.5s steps(40, end),
     blink-caret .75s step-end infinite;
+    /* border-top: 500px; */
+    TOP: 15%;
 }
 
 
@@ -132,4 +135,8 @@ h4 {
     padding-right: 3rem;
     padding-left: 3rem;
   }
+}
+
+#main-container {
+  text-align: center;
 }

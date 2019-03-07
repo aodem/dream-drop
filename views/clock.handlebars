@@ -1,9 +1,13 @@
 {{!-- Navbar to display in all pages --}}
 {{> header}}
 
-<body>
-	<div id='main-container'>
+<body >
+
+	<div class="container-fluid">
+	<div id='main-container' >
 		<h2 id='clock'></h2>
+
+		<h4>Set The Alarm. Sleep On It! Then Drop Those Sweet Dreams!</h4>
 	</div>
 
 	<div id='alarm-container'>
@@ -167,20 +171,18 @@
 			</div>
 		</label>
 	</div>
-	</div>
+<br>
 
 	<div id='buttonHolder'>
 		<div>
-			<button id='setButton' onClick='alarmSet()' class="btn btn-info btn-lg">Set Alarm</button>
+			<button id='setButton' onClick='alarmSet()' class="btn  blue-gradient btn-info btn-lg">Set Alarm</button>
 		</div>
 
 		<div>
-			<button id='clearButton' onClick='alarmClear()' class="btn btn-info btn-lg">Clear Alarm</button>
+			<button id='clearButton' onClick='alarmClear()' class="btn blue-gradient btn-info btn-lg"  class="shake">Clear Alarm</button>
 		</div>
 	</div>
 
-
-	<script type='text/javascript' src='../public/assets/js/clock.js'></script>
 </body>
 
 

@@ -1,7 +1,8 @@
 // *********************************************************************************
 // html-routes.js - this file offers a set of routes for sending users to the various html pages
 // *********************************************************************************
-
+// dependencies
+const db = require("../models");
 // Routes
 // =============================================================
 // Each of the below routes just handles the HTML page that the user gets sent to.
@@ -17,7 +18,19 @@ module.exports = (app) => {
   });
   //route to dreams page
   app.get("/dreams", (req, res) => {
-    res.render("dreams",  { title: "Dreams Page"});
+    db.Dreams.findAll({}).then(function(data) {
+      console.log(`\nall dreams captured: \n${data}`);
+      console.log(JSON.stringify(data, null, 3));
+
+      res.render("dreams",  { 
+        title: "Dreams Page",
+        dreams: data
+      });
+    });  
+  });
+  //route to alarm page
+  app.get("/clock", (req, res) => {
+    res.render("clock",  { title: "Alarm Page"});
   });
 }
 

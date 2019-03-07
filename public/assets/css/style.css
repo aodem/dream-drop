@@ -35,12 +35,23 @@ h1 {
     0px 14px 10px rgba(0, 0, 0, 0.15),
     0px 24px 2px rgba(0, 0, 0, 0.1),
     0px 34px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 125px;
 }
 
 .display-4 {
   color: rgb(252, 245, 245);
   font-size: 30px;
+  position: relative;
+  top: 45px;
 }
+.display-5 {
+  color: rgb(252, 245, 245);
+  font-size: 30px;
+  position: relative;
+  top: 10px;
+}
+
 
 h5 {
   font-family: 'Pacifico', regular;
@@ -85,7 +96,8 @@ h4 {
     typing 3.5s steps(40, end),
     blink-caret .75s step-end infinite;
     /* border-top: 500px; */
-    TOP: 15%;
+    position: relative;
+    top: 125px;
 }
 
 

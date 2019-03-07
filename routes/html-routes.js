@@ -28,5 +28,9 @@ module.exports = (app) => {
       });
     });  
   });
+  //route to alarm page
+  app.get("/clock", (req, res) => {
+    res.render("clock",  { title: "Alarm Page"});
+  });
 }
 

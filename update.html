@@ -1,0 +1,46 @@
+{{> header}}
+
+<h2>Update your dream!</h2>
+
+{{!-- Form to input dream data --}}
+<main>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="splashbox">
+            <h5 class="display-4">Drop Dreams Here:</h5>
+            <form action="/dreams" method="POST" class="dream_create">
+                <div class="form-group">
+                    <label for="dream_description">Drop Dream Here:</label>
+                    <textarea class="form-control" rows="5" id="dream_description" name="dream_description"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="mood">What Mood Were you in Before Sleeping?</label>
+                        <input type="text" class="form-control" id="mood" placeholder="Enter Mood Here" name="mood">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="food">What did you eat before sleeping?</label>
+                        <input type="text" class="form-control" id="food" placeholder="Enter Food Here" name="food">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="hours_of_sleep">How many total hours did you sleep?</label>
+                        <input type="number" class="form-control" id="hours_of_sleep" placeholder="Enter Number Here" name="hours_of_sleep">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="tv_on">Did you fall asleep with the television on?</label>
+                        <select id="tv_on" class="form-control" name="tv_on">
+                            <option selected>Please Choose One</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info btn-lg">Drop Your Dream</button>
+            </form>
+        </div>
+    </div>
+<!-- Custom Script -->
+<script src="js/cms.js" type="text/javascript"></script>
+
+</body>

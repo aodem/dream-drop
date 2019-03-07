@@ -1,41 +1,41 @@
 // demo page javascript 
 $(() => {
-  // filter jquery
-  // $().on("submit", e => {
-  //   event.preventDefault(e);
+  //filter jquery
+  $().on("submit", e => {
+    event.preventDefault(e);
 
-  //   // add chosen attribute. when that is changes to chosen grab the val and the name for the query string
+    // add chosen attribute. when that is changes to chosen grab the val and the name for the query string
 
-  //   let moodVal = $("select[name=]").val();
-  //   let categoryVal = $("select[name=]").val();
+    let moodVal = $("select[name=]").val();
+    let categoryVal = $("select[name=]").val();
 
-  //   let preChoices = [moodVal, categoryVal];
+    let preChoices = [moodVal, categoryVal];
 
-  //   let choices = [];
+    let choices = [];
 
-  //   preChoices.forEach(element => {
-  //     if (element != " ") {
-  //       choices.push(element);
-  //     }
-  //   });
+    preChoices.forEach(element => {
+      if (element != " ") {
+        choices.push(element);
+      }
+    });
 
-  //   let filterChoices = {
-  //     choices: choices
-  //   };
+    let filterChoices = {
+      choices: choices
+    };
 
-  //   $.ajax({
-  //     url: `/api/dreamers/filter/?dreamer=${writer},mood=${mood},category=${category}`,
-  //     method: "GET",
-  //     data: newDreamer
-  //   }).then(results => {
-  //     console.log(`results\n`);
-  //     console.log(
-  //       `New dreamer added:\n${newDreamer.name}\n${
-  //         newDreamer.email
-  //       }\n${newDreamer.age}\n${newDreamer.sex}\n`
-  //     );
-  //   });
-  // });
+    $.ajax({
+      url: `/api/dreamers/filter/?dreamer=${writer},mood=${mood},category=${category}`,
+      method: "GET",
+      data: newDreamer
+    }).then(results => {
+      console.log(`results\n`);
+      console.log(
+        `New dreamer added:\n${newDreamer.name}\n${
+          newDreamer.email
+        }\n${newDreamer.age}\n${newDreamer.sex}\n`
+      );
+    });
+  });
 
   // new dream submisssion
   $(".dream_create").on("submit", e => {
@@ -49,7 +49,7 @@ $(() => {
       food: $("input[name=food]").val().trim(),
       hours_of_sleep: $("input[name=hours_of_sleep]").val(),
       tv_on: $("select[name=tv_on]").val(),
-      category: "lucid"
+      category: $("select[name=category]").val()
     };
 
     $.ajax({

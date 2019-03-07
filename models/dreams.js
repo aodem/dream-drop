@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 	const Dreams = sequelize.define("Dreams", {
-		dreamer_name: {
+		dreams_title: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
@@ -27,6 +27,10 @@ module.exports = function (sequelize, DataTypes) {
 		tv_on: {
 			type: DataTypes.BOOLEAN,
 			default: false,
+			allowNull: false
+		},
+		author_id: {
+			type: DataTypes.INTEGER,
 			allowNull: false
 		}
 	});

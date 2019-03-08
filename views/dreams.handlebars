@@ -9,15 +9,15 @@
             <h5 class="display-5">Dream Drop:</h5>
             <form action="/dreams" method="POST" class="dream_create">
                 <div class="form-row">
-                    {{#each dreams}}
                     <div class="form-group col-md-8">
                         <label for="dreamer_name">Please Select Your Name From the Drop Down Menu:</label>
-                        <select id="" class="form-control" name="tv_on">
+                        <select class="form-control" name="dreamer_name">
                             <option selected>Please Choose One</option>
-                            <option value="true">{{this.dreamer_name}}</option>
+                            {{#each dreams.dreamers}}
+                            <option value="true" data-id={{this.id}}>{{this.dreamer_name}}</option>
+                            {{/each}}
                         </select>
                     </div>
-                    {{/each}}
                     <div class="form-group col-md-4">
                         <label for="dreamer_title">What is the Title of Your Dream?</label>
                         <input type="text" class="form-control" id="dream_title" placeholder="Enter Title Here"
@@ -89,55 +89,12 @@
         </div>
     </div>
 
-
-    {{!-- Form to filter dreams by either category or mood --}}
-    <div class="container-fluid">
-        <div class="splashbox">
-
-            <h5 class="display-5">Filter Which Dreams You See Here, Or Keep Scrolling to See All Dreams:</h5>
-            <form action="/dreams" method="POST" class="dream_create">
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="category">Filter by Category:</label>
-                        <select class="custom-select" name="category" data-selected="unchecked">
-                            <option selected>Please Choose One</option>
-                            <option value="Daydream">Daydream</option>
-                            <option value="Lucid Dream">Lucid Dream</option>
-                            <option value="Nightmare">Nightmare</option>
-                            <option value="Recurring Dream">Recurring Dream</option>
-                            <option value="Healing Dream">Healing Dream</option>
-                            <option value="Prophetic Dream">Prophetic Dream</option>
-                            <option value="Signal Dream">Signal Dream</option>
-                            <option value="Epic Dream">Epic Dream</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="mood">Filter by Mood:</label>
-                        <select class="custom-select" name="mood" data-selected="unchecked">
-                            <option selected>Please Choose One</option>
-                            <option value="Tense-Nervous">Tense-Nervous</option>
-                            <option value="Irritated-Annoyed">Irritated-Annoyed</option>
-                            <option value="Excited-Lively">Excited-Lively</option>
-                            <option value="Cheerful-Happy">Cheerful-Happy</option>
-                            <option value="Bored-Weary">Bored-Weary</option>
-                            <option value="Gloomy-Sad">Gloomy-Sad</option>
-                            <option value="Relaxed-Carefree">Relaxed-Carefree</option>
-                            <option value="Calm-Serene">Calm-Serene</option>
-                        </select>
-                    </div>
-                </div>
-                <button id="filterDreamBtn" type="submit" class="btn btn-info btn-lg">Filter Dreams</button>
-            </form>
-        </div>
-    </div>
-
     {{!-- displays all available user dreams from dreams data table --}}
     <div class="container-fluid">
         <div class="splashbox">
             <div class="row">
                 <div class="col-lg-12">
-                    {{#each dreams}}
+                    {{#each dreams.dreams}}
                     <div>
                         <p>{{this.dream_description}}</p>
                         <h6>{{this.mood}}</h6>

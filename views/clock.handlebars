@@ -1,24 +1,41 @@
 {{!-- Navbar to display in all pages --}}
 {{> header}}
-<head><script src='/clock.js'></script></head>
 <body>
+ <!-- [CURRENT TIME] -->
+    <br>
+	<br>
+	<div id="ctime">
+      <h3 class="header">THE CURRENT TIME</h3>
+      <div class="square">
+        <div class="digits" id="chr">00</div>
+        <div class="text">HR</div>
+      </div>
+      <div class="square">
+        <div class="digits" id="cmin">00</div>
+        <div class="text">MIN</div>
+      </div>
+      <div class="square">
+        <div class="digits" id="csec">00</div>
+        <div class="text">SEC</div>
+      </div>
+    </div>
 
-	<div class="container-fluid">
-		<div id='main-container'>
-			<h2 id='clock'></h2>
+    <!-- [SET ALARM] -->
+    <div id="tpick">
+      <h3 class="header">
+        SET ALARM
+      </h3>
+      <div id="tpick-h"></div>
+      <div id="tpick-m"></div>
+      <div id="tpick-s"></div>
+      <div>
+        <input type="button" value="Set" id="tset"/>
+        <input type="button" value="Reset" id="treset" disabled/>
+      </div>
+    </div>
 
-			<h4>Set The Alarm. Sleep On It! Then Drop Those Sweet Dreams!</h4>
-		</div>
-		<h3>Alarm Clock</h3>
-		<div class="wrapper">
-			<label>Alarm Time</label>
-			
-				<input type="time" name="" class="alarm-time" />
-					<button class="btn-alarm">Set Alarm</button>
-					<div class="options">
-						<button class="btn-snooze">Snooze for 5s</button>
-						<button class="btn-stopalarm">Stop Alarm</button>
-					</div>
-    </div >
-			
+    <!-- [ALARM SOUND] -->
+    <audio id="alarm-sound">
+      <source src="/assets/images/alarm.mp3" type="audio/mp3">
+    </audio>
 </body>

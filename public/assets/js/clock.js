@@ -1,159 +1,106 @@
-const sound = new Audio("https://www.freespecialeffects.co.uk/soundfx/animals/duck1.wav");
-sound.loop = true;
-
-const h2 = document.getElementById('clock');
-
-// display current time by the second
-const currentTime = setInterval(function () {
-	const date = new Date();
-
-	const hours = (12 - (date.getHours()));
-	// const hours = date.getHours();
-
-	const minutes = date.getMinutes();
-
-	const seconds = date.getSeconds();
-
-	const ampm = (date.getHours()) < 12 ? 'AM' : 'PM';
-
-
-	//convert military time to standard time
-
-	if (hours < 0) {
-		hours = hours * -1;
-	} else if (hours == 00) {
-		hours = 12;
-	} else {
-		hours = hours;
-	}
-
-
-	h2.textContent = addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds) + "" + ampm;
-
-}, 1000);
-
-
-/*functions to get hour, min, secs, 
-  am or pm, add zero, set alarm time and sound, clear alarm
-*/
-
-function addZero(time) {
-
-	return (time < 10) ? "0" + time : time;
-
-}
-
-function hoursMenu() {
-
-	const select = document.getElementById('alarmhrs');
-	const hrs = 12
-
-	for (i = 1; i <= hrs; i++) {
-		select.options[select.options.length] = new Option(i < 10 ? "0" + i : i, i);
-
-	}
-}
-hoursMenu();
-
-function minMenu() {
-
-	const select = document.getElementById('alarmmins');
-	const min = 59;
-
-	for (i = 0; i <= min; i++) {
-		select.options[select.options.length] = new Option(i < 10 ? "0" + i : i, i);
-	}
-}
-minMenu();
-
-function secMenu() {
-
-	const select = document.getElementById('alarmsecs');
-	const sec = 59;
-
-	for (i = 0; i <= sec; i++) {
-		select.options[select.options.length] = new Option(i < 10 ? "0" + i : i, i);
-	}
-}
-secMenu();
-
-
-function alarmSet() {
-
-	const hr = document.getElementById('alarmhrs');
-
-	const min = document.getElementById('alarmmins');
-
-	const sec = document.getElementById('alarmsecs');
-
-	const ap = document.getElementById('ampm');
-
-
-	const selectedHour = hr.options[hr.selectedIndex].value;
-	const selectedMin = min.options[min.selectedIndex].value;
-	const selectedSec = sec.options[sec.selectedIndex].value;
-	const selectedAP = ap.options[ap.selectedIndex].value;
-
-	const alarmTime = addZero(selectedHour) + ":" + addZero(selectedMin) + ":" + addZero(selectedSec) + selectedAP;
-	console.log('alarmTime:' + alarmTime);
-
-	document.getElementById('alarmhrs').disabled = true;
-	document.getElementById('alarmmins').disabled = true;
-	document.getElementById('alarmsecs').disabled = true;
-	document.getElementById('ampm').disabled = true;
-
-
-	//when alarmtime is equal to currenttime then play a sound
-	const h2 = document.getElementById('clock');
-
-	/*function to calcutate the current time 
-	then compare it to the alarmtime and play a sound when they are equal
-	*/
-
-	setInterval(function () {
-
-		const date = new Date();
-
-		const hours = (12 - (date.getHours()));
-		// const hours = date.getHours();
-
-		const minutes = date.getMinutes();
-
-		const seconds = date.getSeconds();
-
-		const ampm = (date.getHours()) < 12 ? 'AM' : 'PM';
-
-
-		//convert military time to standard time
-
-		if (hours < 0) {
-			hours = hours * -1;
-		} else if (hours == 00) {
-			hours = 12;
-		} else {
-			hours = hours;
+var ac = {
+	init : function () {
+	// ac.init() : start the alarm clock
+  
+	  // Get the current time - hour, min, seconds
+	  ac.chr = document.getElementById("chr");
+	  ac.cmin = document.getElementById("cmin");
+	  ac.csec = document.getElementById("csec");
+  
+	  // The time picker - Hr, Min, Sec
+	  ac.thr = ac.createSel(23);
+	  document.getElementById("tpick-h").appendChild(ac.thr);
+	  ac.thm = ac.createSel(59);
+	  document.getElementById("tpick-m").appendChild(ac.thm);
+	  ac.ths = ac.createSel(59);
+	  document.getElementById("tpick-s").appendChild(ac.ths);
+  
+	  // The time picker - Set, reset
+	  ac.tset = document.getElementById("tset");
+	  ac.tset.addEventListener("click", ac.set);
+	  ac.treset = document.getElementById("treset");
+	  ac.treset.addEventListener("click", ac.reset);
+  
+	  // The alarm sound
+	  ac.sound = document.getElementById("alarm-sound");
+  
+	  // Start the clock
+	  ac.alarm = null;
+	  setInterval(ac.tick, 1000);
+	},
+  
+	createSel : function (max) {
+	// createSel() : support function - creates a selector for hr, min, sec
+  
+	  var selector = document.createElement("select");
+	  for (var i=0; i<=max; i++) {
+		var opt = document.createElement("option");
+		i = ac.padzero(i);
+		opt.value = i;
+		opt.innerHTML = i;
+		selector.appendChild(opt);
+	  }
+	  return selector
+	},
+  
+	padzero : function (num) {
+	// ac.padzero() : support function - pads hr, min, sec with 0 if <10
+  
+	  if (num < 10) { num = "0" + num; }
+	  else { num = num.toString(); }
+	  return num;
+	},
+  
+	tick : function () {
+	// ac.tick() : update the current time
+  
+	  // Current time
+	  var now = new Date();
+	  var hr = ac.padzero(now.getHours());
+	  var min = ac.padzero(now.getMinutes());
+	  var sec = ac.padzero(now.getSeconds());
+  
+	  // Update current clock
+	  ac.chr.innerHTML = hr;
+	  ac.cmin.innerHTML = min;
+	  ac.csec.innerHTML = sec;
+  
+	  // Check and sound alarm
+	  if (ac.alarm != null) {
+		now = hr + min + sec;
+		if (now == ac.alarm) {
+		  if (ac.sound.paused) {
+			ac.sound.play();
+		  }
 		}
-
-		const currentTime = h2.textContent = addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds) + "" + ampm;
-
-
-		if (alarmTime == currentTime) {
-			sound.play();
-		}
-
-	}, 1000);
-
-
-	// console.log('currentTime:' + currentTime);	
-
-}
-
-
-function alarmClear() {
-
-	document.getElementById('alarmhrs').disabled = false;
-	document.getElementById('alarmmins').disabled = false;
-	document.getElementById('alarmsecs').disabled = false;
-	document.getElementById('ampm').disabled = false;
-	sound.pause();
-}
+	  }
+	},
+  
+	set : function () {
+	// ac.set() : set the alarm
+  
+	  ac.alarm = ac.thr.value + ac.thm.value + ac.ths.value;
+	  ac.thr.disabled = true;
+	  ac.thm.disabled = true;
+	  ac.ths.disabled = true;
+	  ac.tset.disabled = true;
+	  ac.treset.disabled = false;
+	},
+  
+	reset : function () {
+	// ac.reset() : reset the alarm
+  
+	  if (!ac.sound.paused) {
+		ac.sound.pause();
+	  }
+	  ac.alarm = null;
+	  ac.thr.disabled = false;
+	  ac.thm.disabled = false;
+	  ac.ths.disabled = false;
+	  ac.tset.disabled = false;
+	  ac.treset.disabled = true;
+	}
+  };
+  
+  // INIT - RUN ALARM CLOCK
+  window.addEventListener("load", ac.init);
